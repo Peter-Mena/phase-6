@@ -1,0 +1,48 @@
+Q1: How does cron scheduling work? Show a crontab entry to run a script every 5 minutes.
+Cron is a Linux time-based job scheduler. It runs commands or scripts automatically at specified times.
+*/5 * * * * /usr/bin/python3  
+
+Q2: Why do we need log rotation? Show an example logrotate config for temperature.log.
+if we recieve too much data it will fill up the disk, slow down the system and become to large to analyze
+so the rotation deletes the very old data, archiving old logs the old data and compress them
+ and starting fresh logs automatically 
+example : 
+/home/peter/iot_logger/logs/temperature.log {
+    size 1M
+    compress
+    copytruncate
+    missingok
+    notifempty
+    rotate 5
+}
+
+Q3: Explain the difference between a Virtual Machine and a Container. Must containers use the same OS as the host? Why or why not?
+Virtual Machine: 1- runs a full guest OS (e.g., Linux, Windows)
+                 2- needs a hypervisor like VirtualBox
+                 3- uses more RAM/CPU
+                 4- slow
+Container: 1- shares the host OS kernel
+           2- runs on container engine like docker
+           3- only runs the app and its dependencies
+           4- Fast
+           5- can run more than one container on the same kernel so we can save huge space
+Containers do not need the same OS distribution, but they must use the same kernel.
+which means they must be Linux if the host is Linux. 
+
+Q4: Reflection: Which actions in this project combined multiple Linux concepts (e.g., redirection + process monitoring)? How does this apply to real IoT systems?
+Redirection & Pipes :   file.log, 2>&1
+                        ls | grep .py
+
+Environment Variables : like we can store sensor readings in some variable like export temp_sensor=temperature
+
+Background Processes : python3 script.py & , to can control the terminal 
+
+Log Rotation : To prevent logs from filling the disk and analyze the fresh data
+
+Text Processing & Filtering: grep, awk, cat, tail
+
+its all important in IoT to :
+1- Reliability = Background + Cron + Log Rotation
+2- Automation = Scripts + Environment Variables
+3- Monitoring = Process Control + File Descriptors
+4- Efficiency = Redirection + Text Processing
