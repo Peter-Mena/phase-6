@@ -32,3 +32,16 @@ cat ~/iot_logger/logs/temperature.log #there is 5 minutes difference between rea
 2025-09-04 23:15:05 - [unknown] Sensor reading: 20.71�C
 ### 
 
+task 5: Compress old logs into .tar.gz in data/.
+tar -czf ~/iot_logger/data/logs_backup_$(date +%Y-%m-%d).tar.gz *.log*
+ls -l ~/iot_logger/data/
+###
+total 44
+-rw-rw-r-- 1 peter peter   230 سبت  4 00:13 clean_readings.txt
+-rw-rw-r-- 1 peter peter  9620 سبت  4 23:23 logs_backup_2025-09-04.tar.gz
+-rw-rw-r-- 1 peter peter   725 سبت  3 23:16 readings.txt
+-rw-rw-r-- 1 peter peter  1705 سبت  4 00:44 sensor.log
+-rw-r--r-- 1 peter peter 12813 أغس 31 22:38 services
+-rwxrwxr-x 1 peter peter   568 سبت  4 00:44 temperature.log
+###
+
