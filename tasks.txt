@@ -12,3 +12,6 @@ sudo nano /etc/logrotate.d/iot_logger
             }   
 #
 sudo logrotate -d /etc/logrotate.d/iot_logger
+
+task 2: Test by forcing a rotation.
+sudo logrotate -f /etc/logrotate.d/iot_logger
