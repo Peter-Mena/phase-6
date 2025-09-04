@@ -1,0 +1,14 @@
+task 1: Configure log rotation for temperature.log (rotate at 1 MB, compress).
+sudo nano /etc/logrotate.d/iot_logger
+#
+        /home/peter/iot_logger/logs/temperature.log {
+              size 1M
+              compress
+              copytruncate
+              missingok
+              notifempty
+              rotate 5
+              su peter peter
+            }   
+#
+sudo logrotate -d /etc/logrotate.d/iot_logger
