@@ -45,3 +45,13 @@ total 44
 -rwxrwxr-x 1 peter peter   568 سبت  4 00:44 temperature.log
 ###
 
+task 6: Simulate sending archives to /home/<username>/server/ using cp, scp, or rsync. (hint:
+use can use scp and copy to destination directory in another path on the same machine just for simulation).
+cd 
+mkdir server 
+cp ~/iot_logger/data/logs_backup_*.tar.gz /home/peter/server/
+cd server
+rm logs_backup_2025-09-04.tar.gz
+scp ~/iot_logger/data/logs_backup_*.tar.gz /home/peter/server/
+rm logs_backup_2025-09-04.tar.gz
+rsync -av ~/iot_logger/data/logs_backup_*.tar.gz /home/peter/server/
