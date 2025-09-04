@@ -15,3 +15,8 @@ sudo logrotate -d /etc/logrotate.d/iot_logger
 
 task 2: Test by forcing a rotation.
 sudo logrotate -f /etc/logrotate.d/iot_logger
+
+task 3: Schedule the Python script to run every 5 minutes with cron.
+crontab -e
+# at the end of the file we add: 
+*/5 * * * * /usr/bin/python3 /home/peter/iot_logger/scripts/sensor_script.py >> /home/peter/iot_logger/logs/temperature.log 2>&1  
