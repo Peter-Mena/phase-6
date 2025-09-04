@@ -20,3 +20,15 @@ task 3: Schedule the Python script to run every 5 minutes with cron.
 crontab -e
 # at the end of the file we add: 
 */5 * * * * /usr/bin/python3 /home/peter/iot_logger/scripts/sensor_script.py >> /home/peter/iot_logger/logs/temperature.log 2>&1  
+
+task 4: Verify log growth over time.
+cat ~/iot_logger/logs/temperature.log #there is 5 minutes difference between readings
+###
+2025-09-04 23:10:18 - [unknown] Sensor reading: 23.63°C
+2025-09-04 23:10:20 - [unknown] Sensor reading: 20.48°C
+2025-09-04 23:10:22 - [unknown] Sensor reading: 25.26°C
+2025-09-04 23:15:01 - [unknown] Sensor reading: 29.86�C
+2025-09-04 23:15:03 - [unknown] Sensor reading: 23.48�C
+2025-09-04 23:15:05 - [unknown] Sensor reading: 20.71�C
+### 
+
